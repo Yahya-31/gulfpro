@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Leads admin | Gulfpro Accountants</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/config.js" defer></script>
+<script src="assets/common.js" defer></script>
+<script src="assets/admin.js" defer></script>
+</head>
+<body data-no-tracking>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/logo.png" alt="Gulfpro Accountants" width="211" height="26"></a>
+    <button class="btn btn-ghost" id="signout" type="button" hidden>Sign out</button>
+  </div>
+</header>
+
+<main class="admin">
+  <div class="wrap">
+    <section class="admin-login form-card" id="login" aria-labelledby="login-title">
+      <h1 id="login-title" class="login-title">Leads admin</h1>
+      <p class="sub">Enter the admin passcode to see the leads from the landing page.</p>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="passcode">Passcode</label>
+          <input id="passcode" name="passcode" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn btn-red btn-block" type="submit"><span class="label">Open leads</span></button>
+        <div class="form-status" id="login-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden aria-labelledby="dash-title">
+      <div class="admin-top">
+        <div>
+          <h1 id="dash-title">Leads</h1>
+          <p class="meta" id="updated">Loading…</p>
+        </div>
+        <div class="toolbar">
+          <button class="btn btn-ghost" id="refresh" type="button">Refresh</button>
+          <button class="btn btn-ghost" id="export" type="button">Export CSV</button>
+          <a class="btn btn-ink" id="sheet-link" href="#" target="_blank" rel="noopener">Open Google Sheet</a>
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile"><strong id="t-total">0</strong><small>Total leads</small></div>
+        <div class="tile"><strong id="t-today">0</strong><small>Today</small></div>
+        <div class="tile"><strong id="t-week">0</strong><small>Last 7 days</small></div>
+        <div class="tile"><strong id="t-new">0</strong><small>Status: New</small></div>
+      </div>
+
+      <div class="filters">
+        <div class="field search">
+          <label for="f-search">Search</label>
+          <input id="f-search" type="search" placeholder="Name, company, mobile or email">
+        </div>
+        <div class="field">
+          <label for="f-service">Service</label>
+          <select id="f-service"><option value="">All services</option></select>
+        </div>
+        <div class="field">
+          <label for="f-emirate">Emirate</label>
+          <select id="f-emirate"><option value="">All emirates</option></select>
+        </div>
+        <div class="field">
+          <label for="f-status">Status</label>
+          <select id="f-status"><option value="">All statuses</option></select>
+        </div>
+      </div>
+
+      <div class="form-status admin-msg" id="dash-status" role="status" aria-live="polite"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Submitted</th><th>Name &amp; company</th><th>Contact</th><th>Emirate</th><th>Employees</th><th>Service</th><th>Status</th><th>Campaign</th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty" id="empty" hidden>No leads match these filters.</div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
